@@ -1,0 +1,167 @@
+:root {
+    --clr-primary-orange: hsl(25, 97%, 53%);
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-grey-light: hsl(217, 12%, 63%);
+    --clr-grey-medium: hsl(216, 12%, 54%);
+    --clr-blue-dark-200: hsl(213, 19%, 18%);
+    --clr-blue-dark-500: hsl(216, 12%, 8%);
+
+    --border-radius: 2.5rem;
+    --clr-background: hsl(215, 22%, 15%);
+}
+
+/* --- CSS Reset --- */
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+}
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+}
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+input, button, textarea, select {
+    font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+/* Global styles */
+
+body {
+    background-color: var(--clr-blue-dark-500);
+    color: var(--clr-white);
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.5rem;
+
+    display: grid;
+    place-content: center;
+}
+p {
+    color: var(--clr-grey-light);
+    line-height: 1.7;
+}
+
+/* Utilities */
+
+.circle {
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    display: grid;
+    place-content: center;
+}
+
+.flex-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Buttons */
+
+.button {
+    display: block;
+    width: 100%;
+    background-color: var(--clr-primary-orange);
+    color: var(--clr-white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 1.3rem 2.5rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+.button:active {
+    background-color: var(--clr-white);
+    color: var(--clr-primary-orange);
+}
+
+/* Rating Box */
+
+.rating-box {
+    max-width: 34rem;
+    height: 38rem;
+    background-color: var(--clr-blue-dark-200);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+@media (min-width: 400px){
+    .rating-box {
+        max-width: 38rem;
+        height: 40rem;
+        padding: 2.7rem;
+    }
+    .heading-primary {
+        font-size: 3.2rem;
+    }
+}
+.rating-grade {
+    cursor: pointer;
+    font-weight: 700;
+}
+.rating-grade:active {
+    background-color: var(--clr-primary-orange);
+}
+
+/* The Message Box*/
+
+.message-box {
+    max-width: 34rem;
+    height: 38rem;;
+    background-color: var(--clr-blue-dark-200);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+}
+@media (min-width: 400px){
+    .message-box {
+        max-width: 38rem;
+        height: 40rem;
+        padding: 2.7rem;
+    }
+    .heading-primary {
+        font-size: 3.2rem;
+    }
+}
+.message-box__icon {
+    margin: 0 auto;
+}
+.selected-rating {
+    background-color: rgba(0, 0, 0, .1);
+    color: var(--clr-primary-orange);
+    padding: .5rem;
+    border-radius: var(--border-radius);
+}
+
+/* Additional classes for DOM Manupilation */
+
+.display-none {
+    display: none;
+}
+.orange {
+    background-color: var(--clr-primary-orange);
+}
