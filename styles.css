@@ -118,7 +118,7 @@ p {
     cursor: pointer;
     font-weight: 700;
 }
-.rating-grade:active {
+.rating-grade:hover {
     background-color: var(--clr-primary-orange);
 }
 
@@ -162,6 +162,6 @@ p {
 .display-none {
     display: none;
 }
-.orange {
+.is-active {
     background-color: var(--clr-primary-orange);
 }
