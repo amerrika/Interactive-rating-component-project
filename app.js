@@ -1,29 +1,54 @@
-const ratingBoxEl = document.querySelector(".rating-box");
-const messageBoxEl = document.querySelector(".message-box");
+const messageBox = document.querySelector(".message-box");
+const ratingBox = document.querySelector(".rating-box");
 const btnSubmit = document.querySelector(".button");
-const paragraph = document.querySelector(".selected-rating");
-const ratingValues = document.getElementsByClassName("rating-grade");
+const ratingGrades = document.getElementsByClassName("rating-grade");
 
-// At the start the "display-none" class is added to the message box;
-messageBoxEl.classList.add("display-none");
+// As first we will add display-none class to message-box to hide it;
+messageBox.classList.add("display-none");
 
-
-for(let i = 0; i < ratingValues.length; i++){
-    const ratingValue = ratingValues[i];
+// We will query all elements with class "rating-grade", loop thourgh and add click event
+let i = 0;
+while (i < ratingGrades.length) {
+    // attach click event
+    ratingGrades[i].addEventListener("click", function(){
+        // current grade
+        let cg = Number(this.getAttribute("data-grade"));
+        // update paragraph text in the message-box
+        document.querySelector(".selected-rating").textContent = `You selected ${cg.toString()} out of ${ratingGrades.length}`;
     
-    ratingValue.addEventListener("click", function(){
-        paragraph.textContent = `You selected ${ratingValue.innerText} out of ${ratingValues.length}`
-        // add orange background color when a rating number is clicked
-        ratingValue.classList.add("orange")
-    });
+        // Add active class to preceeding grades
+        let prev = cg;
+        while (1 <= prev) {
+            // check if classlist contains active class, if not, add the class
+            if(!document.querySelector(".rating-grade-" + prev).classList.contains("is-active")){
+                document.querySelector(".rating-grade-" + prev).classList.add("is-active")
+            };
+            // decreasing current index
+            --prev;
+        }
 
-    btnSubmit.addEventListener("click", function(){
-        // display-none added to rating box
-        ratingBoxEl.classList.add("display-none");
-        //display-none removed from message box
-        messageBoxEl.classList.remove("display-none");
-    })
-}
+         // Remove active class from succeeding grades
+        let succ = cg + 1;
+        while (succ <= ratingGrades.length){
+            // check if classlist contains active class, if yes, remove the class
+            if(document.querySelector(".rating-grade-" + succ).classList.contains("is-active")){
+                document.querySelector(".rating-grade-" + succ).classList.remove("is-active")
+            };
+            succ++;
+        }
+
+        // submit button shows message-box
+        btnSubmit.addEventListener("click", function(){
+            // display-none added to rating box
+            ratingBox.classList.add("display-none");
+            //display-none removed from message box
+            messageBox.classList.remove("display-none");
+        })
+
+    }) // end of click event
+    // increment current index
+    i++;
+} // end of while loop
 
 
 
